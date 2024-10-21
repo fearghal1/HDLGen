@@ -1,4 +1,4 @@
-<p align="center">
+![image](https://github.com/user-attachments/assets/dec7c96f-593f-4516-af5b-c3cbb1d50658)<p align="center">
   <img src="Application/Resources/hdlgen_title_blue.png" />
 </p>
 
@@ -16,5 +16,17 @@
 ##
 * [Kanban project management](https://github.com/orgs/HDLGen-ChatGPT/projects/3/views/1)
 * HDLGen-ChatGPT / ChatGPT / EDA toolsuite process diagram:
-![image](https://vicicourse.s3.eu-west-1.amazonaws.com/HDLGen/HDLGen_ChatGPT_DetailedProcessDiagram.png)
+<!-- ![image](https://vicicourse.s3.eu-west-1.amazonaws.com/HDLGen/HDLGen_ChatGPT_DetailedProcessDiagram.png) -->
+
+
+<p align="center">
+  <img src="Application/Resources/main_menu_0.png" />
+</p>
+
+
+<p align="center">
+  <img src="Application/Resources/main_menu_0.png" />
+</p>
+
+
 * License: GNU Affero General Public License 3.0 - [https://opensource.org/license/agpl-v3](https://opensource.org/license/agpl-v3)
