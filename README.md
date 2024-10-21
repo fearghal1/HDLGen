@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/dec7c96f-593f-4516-af5b-c3cbb1d50658)<p align="center">
+<p align="center">
   <img src="Application/Resources/hdlgen_title_blue.png" />
 </p>
 
@@ -25,7 +25,7 @@
 
 
 <p align="center">
-  <img src="Application/Resources/main_menu_0.png" />
+  <img src="Application/Resources/main_menu_1.png" />
 </p>
 
 
