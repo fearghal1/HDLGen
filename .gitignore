@@ -17,3 +17,7 @@ User_Projects/
 *.log
 **/*.jou
 *.jou
+
+# Ignore PyInstaller Files
+Application/dist/
+Application/build

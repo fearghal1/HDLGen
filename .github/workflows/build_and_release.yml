@@ -1,0 +1,71 @@
+name: Manual Release 
+on:
+  workflow_dispatch:  
+  
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  build_and_draft_release:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Fetch all history for calculating version
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Read Version
+        id: version
+        run: |
+          # Read current version
+          $CURRENT_VERSION = Get-Content version.txt -TotalCount 1 | ForEach-Object { $_.Trim() }
+          
+          # Set as environment variable
+          echo "VERSION=$CURRENT_VERSION" >> $env:GITHUB_ENV
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller
+          pip install -r requirements.txt
+
+      - name: Build application with PyInstaller
+        run: |
+          pyinstaller main.spec
+
+      - name: Upload built executable
+        uses: actions/upload-artifact@v3
+        with:
+          name: PYNQ-SoC-Builder
+          path: dist/PYNQ-SoC-Builder.exe
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.VERSION }}
+          name: Release ${{ env.VERSION }}
+          body: |
+            Thank you for checking out the bundled release of HDLGen-ChatGPT. This release consists of a single exe file intended for Windows machines.
+
+            Bundled releases are intended for anyone who wishes to give HDLGen-ChatGPT a try for the first time quick and easily.
+
+            Note to Students: It is recommended to clone the repository instead, as this way you will receive new features and improvements as soon as possible over the course of the semester.
+
+            If you encounter any problems, please open an issue or reach out to @lukecanny.
+
+            All the best, Logicademy Team 😎
+
+            Please Note: This free, open-source application is not digitally signed since code signing certificates cost several hundred dollars annually. When you first run the application, Windows Defender may show a warning message - this is normal for unsigned applications. You can safely proceed by clicking "More info" and then "Run anyway". The source code is available at github.com/Logicademy/PYNQ-SoC-Builder if you'd like to review it or build it yourself.
+
+          draft: true
+          files: dist/HDLGen-ChatGPT.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
