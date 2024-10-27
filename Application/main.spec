@@ -5,7 +5,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[ ('Resources/*.png', 'Resources/') ],
+    datas=[ ('Resources/*.png', 'Resources/'), ('Generator/', 'Generator/'), ('prompts.yml', 'prompts.yml') ],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
