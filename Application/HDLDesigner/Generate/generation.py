@@ -6,6 +6,7 @@ from PySide2.QtCore import *
 from PySide2.QtGui import *
 import qtawesome as qta
 import pyperclip, sys, yaml, os, re
+import app_utils
 
 sys.path.append("..")
 from HDLDesigner.ChatGPT.chatgpt_help import ChatGPTHelpDialog
@@ -45,7 +46,10 @@ class Gen(QWidget):
         self.headerTitleFrame = QFrame()
         self.chatgptTitleFrame = QFrame()
         
-        with open('prompts.yml', 'r') as prompts:
+        self.prompts_yaml_path = "prompts.yml"
+        if app_utils.is_running_as_executable():
+            self.prompts_yaml_path = app_utils.get_resource_path('prompts.yml')
+        with open(self.prompts_yaml_path, 'r') as prompts:
             self.config = yaml.safe_load(prompts)
 
         VHDLModel = self.config["vhdlchatgptmodel"]

@@ -2,6 +2,7 @@
 from PySide2.QtWidgets import *
 from PySide2.QtGui import *
 import yaml
+import app_utils
 
 BLACK_COLOR = "color: black"
 WHITE_COLOR = "color: white"
@@ -29,6 +30,9 @@ class VHDLModelDialog(QDialog):
         self.ChatGPT_model_input.setLineWrapMode(QPlainTextEdit.WidgetWidth)
         self.ChatGPT_model_input.setFont(input_font)
 
+        self.prompts_yaml_path = "prompts.yml"
+        if app_utils.is_running_as_executable():
+            self.prompts_yaml_path = app_utils.get_resource_path('prompts.yml')
 
         self.reset_btn = QPushButton("Reset")
         self.reset_btn.setFont(input_font)
@@ -80,7 +84,7 @@ class VHDLModelDialog(QDialog):
         self.close()
 
     def load_data(self):
-        with open('prompts.yml', 'r') as prompts:
+        with open(self.prompts_yaml_path, 'r') as prompts:
             self.config = yaml.safe_load(prompts)
         
         data = self.config["vhdlchatgptmodel"]
@@ -94,7 +98,7 @@ class VHDLModelDialog(QDialog):
         return data
         
     def reset(self):
-        with open('prompts.yml', 'r') as prompts:
+        with open(self.prompts_yaml_path, 'r') as prompts:
             self.config = yaml.safe_load(prompts)
 
         data = self.config["vhdlchatgptmodelreset"]

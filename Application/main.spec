@@ -1,11 +1,18 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+datas_list = [ 
+    ('Resources/*.png', 'Resources/'), 
+    ('Generator/', 'Generator/'), 
+    ('prompts.yml', './'),
+    ('Help/', 'Help/'),
+    ('HDLDesigner/', 'HDLDesigner/')
+]
 
 a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[ ('Resources/*.png', 'Resources/'), ('Generator/', 'Generator/'), ('prompts.yml', 'prompts.yml') ],
+    datas=datas_list,
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

@@ -11,6 +11,7 @@ from Help.help import HelpDialog
 from Settings.settings import settingsDialog
 import configparser
 import app_utils
+import shutil
 
 APP_AUTHORS = "Created by Fearghal Morgan, Abishek Bupathi & JP Byrne"
 

@@ -5,6 +5,7 @@ import sys, yaml, configparser
 # make sure to add to requirements.txt
 from Settings.VHDLModelDefault import VHDLModelDefaultDialog
 from Settings.VerilogModelDefault import VerilogModelDefaultDialog
+import app_utils
 sys.path.append("..")
 
 BLACK_COLOR = "color: black"
@@ -95,6 +96,10 @@ class settingsDialog(QDialog):
             "QPushButton:enabled {background-color: white; color: black; border-radius: 8px; border-style: plain;padding: 10px; }")
         self.input_frame = QFrame()
 
+        self.prompts_yaml_path = "prompts.yml"
+        if app_utils.is_running_as_executable():
+            self.prompts_yaml_path = app_utils.get_resource_path('prompts.yml')
+
         self.cancelled = True
         self.config = configparser.ConfigParser()
         self.vivado_label.setFont(title_font)
@@ -116,7 +121,7 @@ class settingsDialog(QDialog):
     def setup_ui(self):
         self.config.read('config.ini')
 
-        with open('prompts.yml', 'r') as prompts:
+        with open(self.prompts_yaml_path, 'r') as prompts:
             self.prompts = yaml.safe_load(prompts)
 
         vivadoPath= self.config.get('user', 'vivado.bat')
@@ -211,13 +216,13 @@ class settingsDialog(QDialog):
         with open('config.ini', 'w') as configfile:
             self.config.write(configfile)
 
-        with open('prompts.yml', 'r') as prompts:
+        with open(self.prompts_yaml_path, 'r') as prompts:
             self.prompts = yaml.safe_load(prompts)
 
         self.prompts["vhdlchatgptmodel"] = self.commands[0]
         self.prompts["verilogchatgptmodel"] = self.commands[1]
 
-        with open('prompts.yml', 'w') as prompts:
+        with open(self.prompts_yaml_path, 'w') as prompts:
             yaml.dump(self.prompts, prompts)
 
         self.cancelled = False
