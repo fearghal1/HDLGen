@@ -41,6 +41,6 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-	icon='Resources/blue_logo.png',
+	icon='Resources/blue_logo.ico',
 	name='HDLGen-ChatGPT.exe',
 )
