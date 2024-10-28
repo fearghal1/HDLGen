@@ -11,6 +11,7 @@ import sys
 from datetime import datetime
 import textwrap
 from textwrap import indent
+import app_utils
 
 sys.path.append("..")
 from ProjectManager.project_manager import ProjectManager
@@ -68,6 +69,9 @@ class Generator(QWidget):
 
         # Load VHDL Syntax Database
         vhdl_database_path = "./Generator/HDL_Database/vhdl_database.xml"
+        if app_utils.is_running_as_executable():
+            vhdl_database_path = app_utils.get_resource_path('Generator/HDL_Database/vhdl_database.xml')
+
 
         # Parse the HDLGen Project XML file, and get the root element (<HDLGen> element)
         project_data = minidom.parse(xml_data_path)
@@ -819,6 +823,8 @@ class Generator(QWidget):
             ext = "v"
 
         tcl_database_path = Path("./Generator/TCL_Database/tcl_database.xml")
+        if app_utils.is_running_as_executable():
+            tcl_database_path = app_utils.get_resource_path('Generator/TCL_Database/tcl_database.xml')
 
         tcl_database = minidom.parse(str(tcl_database_path))
         tcl_root = tcl_database.documentElement
@@ -931,6 +937,8 @@ class Generator(QWidget):
             self.tcl_path = proj_path + "/Verilog/IntelPrj/" + self.entity_name + ".tcl"
             ext = "v"
         tcl_database_path = "./Generator/TCL_Database/tcl_database.xml"
+        if app_utils.is_running_as_executable():
+            tcl_database_path = app_utils.get_resource_path("Generator/TCL_Database/tcl_database.xml")
 
         tcl_database = minidom.parse(tcl_database_path)
         tcl_root = tcl_database.documentElement
@@ -1040,9 +1048,12 @@ class Generator(QWidget):
         xml_data_path = ProjectManager.get_xml_data_path()
 
         vhdl_tb_database_path = "./Generator/TB_Database/vhdl_tb_database.xml"
-
+        if app_utils.is_running_as_executable():
+            vhdl_tb_database_path = app_utils.get_resource_path('Generator/TB_Database/vhdl_tb_database.xml')
         wcfg_database_path = "./Generator/WCFG_Database/wcfg_database.xml"
-
+        if app_utils.is_running_as_executable():
+            wcfg_database_path = app_utils.get_resource_path('Generator/WCFG_Database/wcfg_database.xml')
+        
         # Parsing the xml file
         project_data = minidom.parse(xml_data_path)
         HDLGen = project_data.documentElement
@@ -1534,6 +1545,8 @@ class Generator(QWidget):
         gen_arrays = ""
         comp = ""
         vhdl_database_path = "./Generator/HDL_Database/vhdl_database.xml"
+        if app_utils.is_running_as_executable():
+            vhdl_database_path = app_utils.get_resource_path('Generator/HDL_Database/vhdl_database.xml')
         # Parsing the xml file
         vhdl_database = minidom.parse(vhdl_database_path)
         vhdl_root = vhdl_database.documentElement
@@ -1593,6 +1606,8 @@ class Generator(QWidget):
         xml_data_path = ProjectManager.get_xml_data_path()
 
         verilog_database_path = "./Generator/HDL_Database/verilog_database.xml"
+        if app_utils.is_running_as_executable():
+            verilog_database_path = app_utils.get_resource_path("Generator/HDL_Database/verilog_database.xml")
 
         # Parsing the xml file
         project_data = minidom.parse(xml_data_path)
@@ -2487,8 +2502,12 @@ class Generator(QWidget):
         xml_data_path = ProjectManager.get_xml_data_path()
 
         verilog_tb_database_path = "./Generator/TB_Database/verilog_tb_database.xml"
-
+        if app_utils.is_running_as_executable():
+            verilog_tb_database_path = app_utils.get_resource_path("Generator/TB_Database/verilog_tb_database.xml")
+        
         wcfg_database_path = "./Generator/WCFG_Database/wcfg_database.xml"
+        if app_utils.is_running_as_executable():
+            wcfg_database_path = app_utils.get_resource_path("Generator/WCFG_Database/wcfg_database.xml")
 
         # Parsing the xml file
         project_data = minidom.parse(xml_data_path)

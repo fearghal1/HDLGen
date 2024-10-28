@@ -1,10 +1,15 @@
 #Displays the assoicated help markdown file
 import markdown as md
 from PySide2.QtWidgets import *
+import app_utils
 
 HELP_DOC_FILE_PATH = "./Help/help.md"
 OLD_HELP_DOC_FILE_PATH = "./Help/help(old).md"
 HELP_DOC_FILE_DIR = "./Help/"
+if app_utils.is_running_as_executable():
+    HELP_DOC_FILE_PATH = app_utils.get_resource_path("Help/help.md")
+    OLD_HELP_DOC_FILE_PATH = app_utils.get_resource_path("Help/help(old).md")
+    HELP_DOC_FILE_DIR = app_utils.get_resource_path("Help/")
 
 class Help(QWidget):
 
