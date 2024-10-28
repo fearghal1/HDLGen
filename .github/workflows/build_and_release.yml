@@ -40,17 +40,18 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pyinstaller
-          pip install -r requirements.txt
+          pip install -r Application/requirements.txt
 
       - name: Build application with PyInstaller
         run: |
+          cd Application
           pyinstaller main.spec
 
       - name: Upload built executable
         uses: actions/upload-artifact@v3
         with:
-          name: PYNQ-SoC-Builder
-          path: dist/PYNQ-SoC-Builder.exe
+          name: HDLGen-ChatGPT
+          path: dist/HDLGen-ChatGPT.exe
 
       - name: Create Release
         id: create_release
