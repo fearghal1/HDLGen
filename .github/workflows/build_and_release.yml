@@ -66,11 +66,11 @@ jobs:
 
             Note to Students: It is recommended to clone the repository instead, as this way you will receive new features and improvements as soon as possible over the course of the semester.
 
-            If you encounter any problems, please open an issue or reach out to @lukecanny.
+            If you encounter any problems, please open an issue.
 
             All the best, Logicademy Team 😎
 
-            Please Note: This free, open-source application is not digitally signed since code signing certificates cost several hundred dollars annually. When you first run the application, Windows Defender may show a warning message - this is normal for unsigned applications. You can safely proceed by clicking "More info" and then "Run anyway". The source code is available at github.com/Logicademy/PYNQ-SoC-Builder if you'd like to review it or build it yourself.
+            Please Note: This free, open-source application is not digitally signed since code signing certificates cost several hundred dollars annually. When you first run the application, Windows Defender may show a warning message - this is normal for unsigned applications. You can safely proceed by clicking "More info" and then "Run anyway". The source code is available at github.com/Logicademy/HDLGen-ChatGPT if you'd like to review it or build it yourself.
 
           draft: true
           files: Application/dist/HDLGen-ChatGPT.exe
