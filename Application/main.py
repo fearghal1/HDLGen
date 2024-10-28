@@ -169,7 +169,9 @@ class HDLGen(QMainWindow):
         lastDir = self.config.get('user', 'recentEnviro')
 
         if not os.path.exists(lastDir):
-            lastDir = Path("../User_Projects/")
+            lastDir = Path("../User_Projects/")         # If running normally, User_Projects is at Applications/../User_Projects/
+            if app_utils.is_running_as_executable():    # If running as executable, we want User_Projects folder at same level as the .exe file itself.
+                lastDir = Path("./User_Projects/")
 
         selected_proj_dir = QFileDialog.getOpenFileName(self, "Select the Project HDLGen File", str(lastDir), filter="HDLGen (*.hdlgen)")
         load_proj_dir = Path(selected_proj_dir[0])
@@ -193,6 +195,10 @@ class HDLGen(QMainWindow):
         default_config = configparser.ConfigParser()
         
         default_environment = Path(os.getcwd()).parent.absolute() / 'User_Projects'
+        if app_utils.is_running_as_executable():
+            default_environment = Path(os.getcwd()) / 'User_Projects' # If running as executable, User_Projects at same level as exe
+
+
 
         default_config['user'] = {
             'author': 'To be completed',
@@ -226,4 +232,7 @@ def main():
     app.exec_()
 
 if __name__ == '__main__':
+
+    print(f"The current working directory is: {os.getcwd()}")
+
     main()

@@ -15,6 +15,7 @@ from ProjectManager.eda_help import EDAHelpDialog
 from ProjectManager.settings_help import SettingsHelpDialog
 from ProjectManager.language_help import LanguageHelpDialog
 from ProjectManager.projectLink import LinkDialog
+import app_utils
 
 SMALL_SPACING = 10
 LARGE_SPACING = 30
@@ -405,6 +406,8 @@ class ProjectManager(QWidget):
     def fill_default_proj_details(self):
         path = Path(os.getcwd())
         parent_path = path.parent.absolute()
+        if app_utils.is_running_as_executable():
+            parent_path = path  # If we are running as executable, we don't go to parent level
         self.proj_enviro = os.path.join(parent_path, "User_Projects")
         self.proj_dir = os.path.join(self.proj_enviro, "Untitled")
 
