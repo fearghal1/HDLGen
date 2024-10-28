@@ -1,7 +1,7 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 datas_list = [ 
-    ('Resources/*.png', 'Resources/'), 
+    ('Resources/', 'Resources/'), 
     ('Generator/', 'Generator/'), 
     ('prompts.yml', './'),
     ('Help/', 'Help/'),
