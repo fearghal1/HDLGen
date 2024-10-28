@@ -49,6 +49,8 @@ jobs:
         with:
           name: Release vX.Y.Z
           body: |
+            # TODO: Add tag and update title with vX.Y.Z
+
             Thank you for checking out the bundled release of HDLGen-ChatGPT. This release consists of a single exe file intended for Windows machines.
 
             Bundled releases are intended for anyone who wishes to give HDLGen-ChatGPT a try for the first time quick and easily.

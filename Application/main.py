@@ -35,7 +35,7 @@ APP_DESCRIPTION1 = "<ul><li>Fast capture and generation of HDL model and testben
 class HDLGen(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("HDLGen-ChatGPT Version 1.0.0")
+        self.setWindowTitle("HDLGen-ChatGPT")
         self.setWindowFlags(self.windowFlags() & ~Qt.WindowMaximizeButtonHint)
 
         title_font = QFont()
