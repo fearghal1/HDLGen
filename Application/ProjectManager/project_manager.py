@@ -800,8 +800,16 @@ class ProjectManager(QWidget):
         print("Successfully saved!")
 
     def close_project(self):
-        from Application.main import HDLGen
-        self.MainWindow.close()
+        try:
+            from Application.main import HDLGen
+            self.MainWindow.close()
+        except Exception as e:
+            print("Could not find module 'Application' when importing 'Application.main', trying to import 'main' instead.")
+            try:
+                from main import HDLGen
+                self.MainWindow.close()        
+            except Exception as e:
+                print(e)
         if self.MainWindow.isVisible() == False:
             self.window = HDLGen()
             self.window.move(0, 0)
