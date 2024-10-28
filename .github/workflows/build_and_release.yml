@@ -5,6 +5,9 @@
 name: Manual Release
 on:
   workflow_dispatch:  
+  push:
+    branches:
+      - pyinstaller # Automatically execute on dev branch
   
 permissions:
   contents: write
