@@ -1,4 +1,8 @@
-name: Manual Release 
+# Use this flow to manually build and release HDLGen-ChatGPT
+# REMEMBER to update version.txt to the desired version number.
+# using Semantic Versioning https://semver.org/
+
+name: Manual Release
 on:
   workflow_dispatch:  
   
@@ -24,7 +28,7 @@ jobs:
         id: version
         run: |
           # Read current version
-          $CURRENT_VERSION = Get-Content version.txt -TotalCount 1 | ForEach-Object { $_.Trim() }
+          $CURRENT_VERSION = Get-Content Application/version.txt -TotalCount 1 | ForEach-Object { $_.Trim() }
           
           # Set as environment variable
           echo "VERSION=$CURRENT_VERSION" >> $env:GITHUB_ENV
