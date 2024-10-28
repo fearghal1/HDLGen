@@ -101,7 +101,7 @@ class HDLGen(QMainWindow):
         self.processphoto = QLabel()
         curr_direct = os.getcwd()
         photo_direct = curr_direct + "/Resources/processdiagram.png"
-        if app_utils.is_running_as_executable:    # If we are running as executable we handle slightly differently
+        if app_utils.is_running_as_executable():    # If we are running as executable we handle slightly differently
             photo_direct = app_utils.get_resource_path("Resources/processdiagram.png")
         pixmap = QPixmap(photo_direct)
 
